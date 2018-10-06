@@ -1,5 +1,6 @@
 # my personal ignore
 quora_data/
+*.idea/
 
 
 # Byte-compiled / optimized / DLL files
