@@ -9,6 +9,8 @@ matplotlib = "*"
 pandas = "*"
 nltk = "*"
 gensim = "*"
+seaborn = "*"
+tabulate = "*"
 
 [dev-packages]
 

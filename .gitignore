@@ -1,6 +1,7 @@
 # my personal ignore
 quoradata
 test
+# images
 *.idea/
 *test.py
 *.pytest_cache

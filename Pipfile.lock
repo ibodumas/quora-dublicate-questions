@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "30b7a45512912dd047b4cfcb7f012eceeac017cd2138c21859266e21d5810d0b"
+            "sha256": "eedd951e6929cb8fadbd2bd8a57442d00c20730563a3dd06a1141c1137e62a86"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -335,6 +335,14 @@
             "markers": "python_version != '3.1.*' and python_version != '3.3.*' and python_version != '3.0.*' and python_version != '3.2.*' and python_version >= '2.7'",
             "version": "==1.1.0"
         },
+        "seaborn": {
+            "hashes": [
+                "sha256:42e627b24e849c2d3bbfd059e00005f6afbc4a76e4895baf44ae23fe8a4b09a5",
+                "sha256:76c83f794ca320fb6b23a7c6192d5e185a5fcf4758966a0c0a54baee46d41e2f"
+            ],
+            "index": "pypi",
+            "version": "==0.9.0"
+        },
         "six": {
             "hashes": [
                 "sha256:70e8a77beed4562e7f14fe23a786b54f6296e34344c23bc42f07b15018ff98e9",
@@ -354,6 +362,13 @@
                 "sha256:57c568d104c37dbdf5598c41e94b5b143c38dd275bc2856242b8597cfede9453"
             ],
             "version": "==1.7.1"
+        },
+        "tabulate": {
+            "hashes": [
+                "sha256:e4ca13f26d0a6be2a2915428dc21e732f1e44dad7f76d7030b2ef1ec251cf7f2"
+            ],
+            "index": "pypi",
+            "version": "==0.8.2"
         },
         "urllib3": {
             "hashes": [
