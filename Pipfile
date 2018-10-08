@@ -4,7 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-keras = "*"
+sklearn = "*"
+matplotlib = "*"
+pandas = "*"
+nltk = "*"
+gensim = "*"
 
 [dev-packages]
 

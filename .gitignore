@@ -1,6 +1,10 @@
 # my personal ignore
-quora_data/
+quoradata
+test
 *.idea/
+*test.py
+*.pytest_cache
+
 
 
 # Byte-compiled / optimized / DLL files
