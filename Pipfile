@@ -11,6 +11,7 @@ nltk = "*"
 gensim = "*"
 seaborn = "*"
 tabulate = "*"
+wordcloud = "*"
 
 [dev-packages]
 
