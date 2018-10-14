@@ -12,6 +12,8 @@ gensim = "*"
 seaborn = "*"
 tabulate = "*"
 wordcloud = "*"
+keras = "*"
+tensorflow = "*"
 
 [dev-packages]
 
