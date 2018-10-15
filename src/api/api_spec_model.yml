@@ -1,0 +1,52 @@
+swagger: '2.0'
+info:
+  description: API Varifying Duplicate Questions.
+  version: 1.0.0
+  title: NLP
+  contact:
+    name: Ib Odu
+    email: i****@mtu.edu
+  license:
+    name: MIT Licence
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+schemes:
+  - http
+
+basePath: /nlp/
+
+paths:
+  /predict:
+    get:
+      operationId: predict.predictor
+      summary: Predict.
+      description: Predict if a pair of questions are duplicate.
+
+      parameters:
+        - in: query
+          name: question1
+          required: true
+          type: string
+          description: Quesition 1
+        - in: query
+          name: question2
+          required: true
+          type: string
+          description: Quesition 2
+
+      responses:
+        200:
+          description: Operation successful
+          schema:
+            type: object
+            properties:
+              probability:
+                type: string
+              is_duplicate:
+                type: boolean
+
+
