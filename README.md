@@ -20,6 +20,7 @@ Response Body <br>
   "probability": "0.37658742" <br>
 }<br>
 
+![alt text](https://github.com/ibodumas/quora-dublicate-questions/tree/master/images/RESTful.png)
 
 # Installation Instruction
 1. Pipenv is a tool that aims to bring the best of all packaging worlds to the Python world. 
