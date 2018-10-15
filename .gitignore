@@ -5,6 +5,7 @@ test
 *.idea/
 *test.py
 *.pytest_cache
+test*
 
 
 

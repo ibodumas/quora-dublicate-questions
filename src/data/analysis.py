@@ -22,7 +22,7 @@ ALPHA_PLT = 1
 # ---------------------------------- #
 
 # ---------- Load Data ------------- #
-_TRAIN = pd.read_csv(os.path.join(utils.ROOT_DIR, "quoradata", "train.csv"))
+_TRAIN = TRAIN_DF = pd.read_csv(os.path.join(utils.ROOT_DIR, "quoradata", "train.csv"))
 _TEST = pd.read_csv(os.path.join(utils.ROOT_DIR, "quoradata", "test.csv"))
 columns = ['question1', 'question2']
 TRAIN_X = _TRAIN[columns]
