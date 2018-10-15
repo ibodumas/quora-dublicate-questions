@@ -24,7 +24,7 @@ ALPHA_PLT = 1
 # ---------- Load Data ------------- #
 _TRAIN = TRAIN_DF = pd.read_csv(os.path.join(utils.ROOT_DIR, "quoradata", "train.csv"))
 _TEST = pd.read_csv(os.path.join(utils.ROOT_DIR, "quoradata", "test.csv"))
-columns = ['question1', 'question2']
+columns = ["question1", "question2"]
 TRAIN_X = _TRAIN[columns]
 TRAIN_Y = _TRAIN.is_duplicate
 TEST_X = _TEST[columns]
@@ -33,8 +33,13 @@ del _TRAIN, _TEST
 
 
 def generate_word_cloud(text):
-    wc = WordCloud(background_color="white", max_words=20, stopwords=stopwords,
-                   contour_width=3, contour_color='steelblue')
+    wc = WordCloud(
+        background_color="white",
+        max_words=20,
+        stopwords=stopwords,
+        contour_width=3,
+        contour_color="steelblue",
+    )
     wc.generate(text)
     plt.imshow(wc, interpolation="bilinear")
     plt.title(text, fontsize=FONTSIZE)

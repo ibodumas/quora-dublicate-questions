@@ -8,14 +8,18 @@ import keras.backend as K
 NAME = "Natural Language Processing"
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 print("Loading Google_Word_Vectors Again")
-Google_Word_Vectors = os.path.join(ROOT_DIR, "quoradata", "GoogleNews-vectors-negative300.bin.gz")
-WORD_2_VECTOR = gensim_models.KeyedVectors.load_word2vec_format(Google_Word_Vectors, binary=True)
+Google_Word_Vectors = os.path.join(
+    ROOT_DIR, "quoradata", "GoogleNews-vectors-negative300.bin.gz"
+)
+WORD_2_VECTOR = gensim_models.KeyedVectors.load_word2vec_format(
+    Google_Word_Vectors, binary=True
+)
 
 SAVE_MODEL = True
 DIR_WEIGHT_SAVING = os.path.join(ROOT_DIR, "quoradata", "model_json.h5")
 
 nltk.download("stopwords")
-STOPWORDS = stopwords.words('english')
+STOPWORDS = stopwords.words("english")
 # test_df = pd.read_csv(os.path.join(utils.ROOT_DIR, "quoradata", "test.csv"))
 
 PLOT_MODEL_LOSS = False
@@ -33,22 +37,20 @@ SWAGGER_UI = True
 DEBUG = True
 STANDARD_ERRORS = [501, 503, 400, 401, 403, 404, 405, 406, 409, 410, 412, 422, 428]
 
+
 def exponent_neg_manhattan_distance(left, right):
     """ Helper function for the similarity estimate of the LSTMs outputs"""
     return K.exp(-K.sum(K.abs(left - right), axis=1, keepdims=True))
 
 
-
 if __name__ == "__main__":
     _path = [
-                os.path.join(ROOT_DIR, "src"),
-                os.path.join(ROOT_DIR, "src", "learning"),
-                os.path.join(ROOT_DIR, "src", "api"),
-                os.path.join(ROOT_DIR, "src", "quoradata")
-            ]
+        os.path.join(ROOT_DIR, "src"),
+        os.path.join(ROOT_DIR, "src", "learning"),
+        os.path.join(ROOT_DIR, "src", "api"),
+        os.path.join(ROOT_DIR, "src", "quoradata"),
+    ]
 
     for pth in _path:
         if pth not in sys.path:
             sys.path.append(pth)
-
-

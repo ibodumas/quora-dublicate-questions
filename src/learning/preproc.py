@@ -55,14 +55,14 @@ def preprocessing(data_df, is_training):
 
     ### Prepare embedding
     vocab = dict()  # word vocabulary
-    inverse_vocab = ['<unk>']
+    inverse_vocab = ["<unk>"]
     word_to_vec = utils.WORD_2_VECTOR
 
-    que_cols = ['question1', 'question2']
+    que_cols = ["question1", "question2"]
 
-
-    ###
-    def iter_over_df(df, que_cols, text_wordlist, stops, word_to_vec, vocab, inverse_vocab):
+    def iter_over_df(
+        df, que_cols, text_wordlist, stops, word_to_vec, vocab, inverse_vocab
+    ):
         """
         Iterate over the questions
         :param df: dataframe
@@ -90,8 +90,9 @@ def preprocessing(data_df, is_training):
         return df
 
     stops = set(utils.STOPWORDS)
-    data_df = iter_over_df(data_df, que_cols, text_wordlist, stops, word_to_vec, vocab, inverse_vocab)
-
+    data_df = iter_over_df(
+        data_df, que_cols, text_wordlist, stops, word_to_vec, vocab, inverse_vocab
+    )
 
     ### Build the embedding matrix
     def build_embed_matr(vocab, word_to_vec, embed_dim):
@@ -103,49 +104,41 @@ def preprocessing(data_df, is_training):
 
         return embed_mat
 
-
     ### Zero padding
     def zero_padding_train(*args, Y_train=None, max_seq_len):
         data = [*args]
-        for dataset, side in itertools.product(data, ['left', 'right']):
+        for dataset, side in itertools.product(data, ["left", "right"]):
             dataset[side] = pad_sequences(dataset[side], maxlen=max_seq_len)
 
         if is_training:
-            assert X_train['left'].shape == X_train['right'].shape
-            assert len(X_train['left']) == len(Y_train)
+            assert X_train["left"].shape == X_train["right"].shape
+            assert len(X_train["left"]) == len(Y_train)
 
         return data
-
 
     # Split to train validation
     if is_training:
         EMBEDDING_MATRIX = build_embed_matr(vocab, word_to_vec, utils.EMBEDDING_DIM)
         validation_size = int(0.1 * data_df.shape[0])
         X = data_df[que_cols]
-        Y = data_df['is_duplicate']
-        X_train, X_val, Y_train, Y_val = sklearn_train_test_split(X, Y, test_size=validation_size)
+        Y = data_df["is_duplicate"]
+        X_train, X_val, Y_train, Y_val = sklearn_train_test_split(
+            X, Y, test_size=validation_size
+        )
         del X, Y, validation_size, data_df, que_cols
-        X_train = {'left': X_train.question1, 'right': X_train.question2}
-        X_val = {'left': X_val.question1, 'right': X_val.question2}
+        X_train = {"left": X_train.question1, "right": X_train.question2}
+        X_val = {"left": X_val.question1, "right": X_val.question2}
         Y_train = Y_train.values
         Y_val = Y_val.values
-        X_TRAIN, X_VAL = zero_padding_train(X_train, X_val, Y_train=Y_train, max_seq_len=utils.MAX_SEQ_LEN)
+        X_TRAIN, X_VAL = zero_padding_train(
+            X_train, X_val, Y_train=Y_train, max_seq_len=utils.MAX_SEQ_LEN
+        )
         Y_TRAIN = Y_train
         Y_VAL = Y_val
         del X_train, X_val, Y_train, Y_val
         return X_TRAIN, X_VAL, Y_TRAIN, Y_VAL, EMBEDDING_MATRIX
     else:
-        data_df = {'left': data_df.question1, 'right': data_df.question2}
-        return zero_padding_train(data_df, Y_train=None, max_seq_len = utils.MAX_SEQ_LEN)[0]
-
-
-
-
-
-
-
-
-
-
-
-
+        data_df = {"left": data_df.question1, "right": data_df.question2}
+        return zero_padding_train(data_df, Y_train=None, max_seq_len=utils.MAX_SEQ_LEN)[
+            0
+        ]
