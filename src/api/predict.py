@@ -1,39 +1,34 @@
+##
 import utils
 from preproc import preprocessing
-import logging.config
-from keras.models import model_from_json
-from keras.optimizers import Adadelta
 import pandas as pd
+from keras.models import load_model
+from keras.utils import CustomObjectScope
 
-
-LOG = logging.getLogger(utils.NAME)
 
 def predictor(question1, question2):
     data = pd.DataFrame({'question1': question1, "question2": question2}, index=[0])
+    with CustomObjectScope({'exponent_neg_manhattan_distance': utils.exponent_neg_manhattan_distance}):
+        model = load_model(utils.DIR_WEIGHT_SAVING)
+
+    # data = pd.DataFrame({'question1': "question1 How", "question2": "question2 Hello"}, index=[0])
     data = preprocessing(data, is_training=False)
 
-    json_file = open(utils.DIR_MODEL_SAVING, 'r')
-    loaded_model_json = json_file.read()
-    json_file.close()
+    print(data)
+    print(model)
+    print(utils.DIR_WEIGHT_SAVING)
+    print(utils.exponent_neg_manhattan_distance)
+    print([data['left'], data['right']])
 
-    loaded_model = model_from_json(loaded_model_json)
-    # load weights into new model
-    loaded_model.load_weights(utils.DIR_WEIGHT_SAVING)
-    print("Loaded model from disk")
+    score = model.predict([data['left'], data['right']])
+    prob = score[0][0]
+    is_duplicate = False
+    if prob >= 0.5:
+        is_duplicate = True
 
-    # evaluate loaded model on test data
-    optimizer = Adadelta(clipnorm=utils.GRADIENT_CLIPPING_NORM)
-    loaded_model.compile(loss='mean_squared_error', optimizer=optimizer, metrics=['accuracy'])
+    del model, data, score
 
-    score = loaded_model.predict(data, batch_size=utils.BATCH_SIZE, verbose=0)
-    print("%s: %.2f%%" % (loaded_model.metrics_names[1], score[1] * 100))
-
-
-
-
-
-
-
+    return {"is_duplicate": is_duplicate, "probability": str(prob)}
 
 
 

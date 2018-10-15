@@ -1,13 +1,17 @@
 # my personal ignore
-quoradata
+quoradata/GoogleNews-vectors-negative300.bin.gz
+quoradata/test.csv
+quoradata/train_.csv
+quoradata/model_json.h5
+
 test
 # images
 *.idea/
 *test.py
 *.pytest_cache
 test*
-
-
+model/
+backup
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

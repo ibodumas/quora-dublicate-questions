@@ -15,6 +15,10 @@ wordcloud = "*"
 keras = "*"
 tensorflow = "*"
 connexion = "*"
+flask = "*"
+gevent = "*"
+requests = "*"
+pillow = "*"
 
 [dev-packages]
 
