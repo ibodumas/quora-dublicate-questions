@@ -16,7 +16,7 @@ from keras.callbacks import ModelCheckpoint
 
 if __name__ == "__main__":
 
-    TRAIN_DF = pd.read_csv(os.path.join(utils.ROOT_DIR, "quoradata", "train_.csv"))
+    TRAIN_DF = pd.read_csv(os.path.join(utils.ROOT_DIR, "quoradata", "train.csv"))
     X_TRAIN, X_VAL, Y_TRAIN, Y_VAL, EMBEDDING_MATRIX = preprocessing(
         data_df=TRAIN_DF, is_training=True
     )
