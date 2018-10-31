@@ -19,6 +19,7 @@ flask = "*"
 gevent = "*"
 requests = "*"
 pillow = "*"
+requests = ">=2.20.0"
 
 [dev-packages]
 

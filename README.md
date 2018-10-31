@@ -16,8 +16,8 @@ question1 and question2
 
 Response Body <br>
 {<br>
-  "is_duplicate": false, <br>
-  "probability": "0.37658742" <br>
+  &nbsp;&nbsp;&nbsp;&nbsp; "is_duplicate": false, <br>
+  &nbsp;&nbsp;&nbsp;&nbsp; "probability": "0.37658742" <br>
 }<br>
 
 ![Screenshot](RESTful.png)

@@ -90,3 +90,5 @@ if __name__ == "__main__":
         plt.xlabel('Epoch')
         plt.legend(['Train', 'Validation'], loc='upper right')
         plt.show()
+
+
